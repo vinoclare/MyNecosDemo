@@ -30,5 +30,4 @@ public class ConfigController {
     @RequestMapping("/test")
     public String get2() {return test;}
 
-
 }

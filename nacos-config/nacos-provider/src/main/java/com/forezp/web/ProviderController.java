@@ -11,10 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-/**
- * Created by forezp on 2019/5/11.
- */
-
 @RestController
 public class ProviderController {
 
