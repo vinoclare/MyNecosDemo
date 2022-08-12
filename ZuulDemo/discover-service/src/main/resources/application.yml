@@ -1,9 +1,21 @@
 spring:
   application:
-    name: stsc-gateway
+    name: zuul-login
   cloud:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yml
 server:
-  port: 8001
+  port: 8080
+
+zuul:
+  routes:
+    product:
+      path: /provider/**
+      service-id: nacosprovider
+      strip-prefix: true
+  prefix: /gateway
+  sensitive-headers:
