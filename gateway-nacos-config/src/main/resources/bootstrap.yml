@@ -1,0 +1,28 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: spring-cloud-gateway-server
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: json
+        prefix: zuul
+  profiles:
+    active: dev
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+zuul:
+  routes:
+    product-service: # 路由id
+      path: /product-service/**  # 映射路径
+      url: http://127.0.0.1:9002 # 映射路径对应的实际url地址
+      sensitiveHeaders: #默认zuul会屏蔽cookie，cookie不会传到下游服务，这里设置为空则取消默认的黑名单，如果设置了具体的头信息则不会传到下游服务
