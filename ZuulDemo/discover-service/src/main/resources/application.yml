@@ -13,9 +13,17 @@ server:
 
 zuul:
   routes:
-    product:
+    provider:
       path: /provider/**
       service-id: nacosprovider
+      strip-prefix: true
+    provider2:
+      path: /provider2/**
+      service-id: nacosprovider2
+      strip-prefix: true
+    provider3:
+      path: /provider3/**
+      service-id: nacosprovider3
       strip-prefix: true
   prefix: /gateway
   sensitive-headers:
