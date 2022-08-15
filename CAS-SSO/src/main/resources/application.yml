@@ -1,0 +1,34 @@
+server:
+  port: 8890
+  tomcat:
+    uri-encoding: utf-8
+
+spring:
+  application:
+    name: cassso
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yml
+        prefix: nacosprovider
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/sql_test
+    username: root
+    password: 123456
+
+  profiles:
+    active: dev
+
+cas:
+  # 后端服务地址
+  client-host-url: http://127.0.0.1:8890
+  # cas认证中心地址
+  server-url-prefix: https://127.0.0.1:8443/cas
+  # cas认证中心登录地址
+  server-login-url: https://127.0.0.1:8443/cas/login
+  # Ticket校验器使用Cas30ProxyReceivingTicketValidationFilter
+  validation-type: cas3
